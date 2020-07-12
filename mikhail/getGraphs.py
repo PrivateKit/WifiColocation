@@ -10,6 +10,18 @@ parser.add_argument("json", help="Path to json file containing readings")
 parser.add_argument("metric", help="Metric to be returned, either 'jaccard' or 'pearson'")
 args = parser.parse_args()
 
+"""
+usage 
+    Return graphs of changes in Jaccard similarity or Pearson correlation
+    based on distance from a point
+    
+    :-json (str) 
+        Path to JSON file to load readings from
+    :-metric (str)
+        Chosen metric, either Jaccard or Pearson
+"""
+
+
 with open(args.json) as f:
     logs = json.loads(f.read())
 
@@ -58,14 +70,14 @@ if __name__ == "__main__":
     if(args.metric == 'jaccard'):
         plt.title('Jaccard')
         plt.plot(jaccards, marker="o")
-        plt.ylabel("Jaccard similarity with reading at 0ft from AP")
+        plt.ylabel("Jaccard similarity with reading at starting point")
         plt.xlabel("Distance in ft from AP")
         plt.axis([0, 26, 0, 1])
         plt.show()
     else:
         plt.title('Pearson')
         plt.plot(correlations, marker="o", color="g")
-        plt.ylabel("Pearson correlation with reading at 0ft from AP")
+        plt.ylabel("Pearson correlation with reading at starting point")
         plt.xlabel("Distance in ft from AP")
         plt.axis([0, 26, 0.90, 1])
         plt.show()
