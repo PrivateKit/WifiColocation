@@ -16,7 +16,7 @@ usage
     based on distance from a point
     
     :-json (str) 
-        JSON file to load readings from
+        Path to JSON file to load readings from
     :-metric (str)
         Chosen metric, either Jaccard or Pearson
 """
